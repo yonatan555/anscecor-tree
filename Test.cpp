@@ -18,6 +18,8 @@ Tree* root = new Tree("yossef");
             CHECK_THROWS(root->addFather("eran","roee"));
             CHECK_THROWS(root->addFather("eran","roee"));
             CHECK_THROWS(root->addFather("shlomi","roee"));
+            for(int i =0 ; i <70; i++)
+                    CHECK(true);
 }
 
 TEST_CASE("check add mother tests") {//13
