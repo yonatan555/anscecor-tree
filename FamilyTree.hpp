@@ -17,30 +17,25 @@ namespace family
         }
     };
     class Tree {
-    /*private:
-        string name;
-        Tree* mother;
-        Tree* father;
-        Tree* root;
-*/
         Tree* search(string son, Tree* curr);
         Tree* searchDel(string name,Tree* curr);
     public:
-
         string name;
         Tree* mother;
         Tree* father;
         Tree* root;
-
-
+        bool gender;
+        int height;
         void printTree(Tree *root, Trunk *prev, bool isLeft);
         void showTrunks(Trunk *p);
         string getName();
         Tree* getFather();
         Tree* getMother();
         void print();
+        Tree* relation(string name , Tree* curr);
         Tree(string name);
         ~Tree();
+        Tree* searchRel(bool tgender,int theight,Tree* curr);
         void DestroyRecursive(Tree* node);
         Tree &addFather(string son, string father);
         Tree &addMother(string son, string mother);
