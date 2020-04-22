@@ -235,7 +235,7 @@ bool Tree::remove(string name){
 
 
     if(name == root->name){
-
+        throw std::invalid_argument("try to remove root");
         DestroyRecursive(root);
         root=NULL;
         return true;
