@@ -80,20 +80,27 @@ Tree* Tree::searchRel(bool tgender,int theight,Tree* curr)
     return NULL ;
 }
 Tree* Tree::searchDel(string name,Tree* curr){
-    if(curr->father->name == name ||curr->mother->name == name)
+    cout<<"search del"<<endl;
+    if((curr->father != NULL && curr->father->name == name) ||(curr->mother != NULL && curr->mother->name == name))
     {
+        cout<<"return del"<<endl;
         return curr ;
     }
+    cout<<"del1"<<endl;
     if(curr->father != NULL)
     {
+        cout<<"father != null"<<endl;
         Tree* toBRetrun = searchDel(name,curr->getFather());
         if(toBRetrun != NULL)return toBRetrun;
     }
+    cout<<"del2"<<endl;
     if(curr->mother != NULL)
     {
+        cout<<"mother != null"<<endl;
         Tree* toBRetrun = searchDel(name,curr->getMother());
         if(toBRetrun != NULL)return toBRetrun;
     }
+    cout<<"return null"<<endl;
     return NULL ;
 }
 void Tree::showTrunks(Trunk *p)
@@ -228,6 +235,7 @@ string Tree::find(string relation){
     throw std::invalid_argument(moshe+" doesnt exist ");
 }
 bool Tree::remove(string name){
+    cout<<"1 remove"<<endl;
     if(name == root->name){
         DestroyRecursive(root);
         root=NULL;
