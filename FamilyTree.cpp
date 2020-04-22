@@ -83,6 +83,7 @@ Tree* Tree::searchDel(string name,Tree* curr){
 
     if((curr->father != NULL && curr->father->name == name) ||(curr->mother != NULL && curr->mother->name == name))
     {
+
         return curr ;
     }
 
@@ -231,25 +232,34 @@ string Tree::find(string relation){
     throw std::invalid_argument(moshe+" doesnt exist ");
 }
 bool Tree::remove(string name){
+
+
     if(name == root->name){
+
         DestroyRecursive(root);
         root=NULL;
         return true;
     }
+
     Tree *toBeRemoved = searchDel(name,root);
+   // cout<<"---"+toBeRemoved->name<<endl;
     if(toBeRemoved==NULL){
+
         throw std::invalid_argument("there is no name like that");
     }
-    else if(toBeRemoved->getFather()->getName()==name){
+    else if(toBeRemoved->father != NULL && toBeRemoved->getFather()->getName()==name){//(curr->father != NULL && curr->father->name == name)
+
             DestroyRecursive(toBeRemoved->father);
             toBeRemoved->father=NULL;
             return true;
-    } else if (toBeRemoved->getMother()->getName()==name){
+    } else if (toBeRemoved->mother != NULL && toBeRemoved->getMother()->getName()==name){
+
         DestroyRecursive(toBeRemoved->mother);
         toBeRemoved->mother=NULL;
         return true;
     }
     else{
+
         return false;
     }
 }
