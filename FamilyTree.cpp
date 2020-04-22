@@ -231,7 +231,6 @@ string Tree::find(string relation){
     throw std::invalid_argument(moshe+" doesnt exist ");
 }
 bool Tree::remove(string name){
-
     if(name == root->name){
         DestroyRecursive(root);
         root=NULL;
@@ -239,7 +238,7 @@ bool Tree::remove(string name){
     }
     Tree *toBeRemoved = searchDel(name,root);
     if(toBeRemoved==NULL){
-        return false;
+        throw std::invalid_argument("there is no name like that");
     }
     else if(toBeRemoved->getFather()->getName()==name){
             DestroyRecursive(toBeRemoved->father);
